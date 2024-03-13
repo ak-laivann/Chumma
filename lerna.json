@@ -1,0 +1,8 @@
+{
+  "packages": ["modules/*"],
+  "useNx": false,
+  "version": "1.0.0",
+  "rejectCycles": true,
+  "stream": true,
+  "allowBranch": ["master"]
+}

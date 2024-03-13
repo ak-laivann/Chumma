@@ -1,0 +1,25 @@
+{
+  "name": "@tii/components",
+  "version": "1.0.0",
+  "description": "TII Components For FE Framework",
+  "main": "es5/index.js",
+  "types": "./es5/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist && rm -rf es5 && rm -rf build",
+    "start": "tsc -w --preserveWatchOutput",
+    "format:test": "prettier --check \"src/**/*.tsx\" \"src/**/*.ts\"",
+    "format:write": "prettier --write \"**/*.{md,json}\" \"(src|tst)/**/*.{js,jsx,ts,tsx}\" \"!.tmp/**\"",
+    "format": "npm run format:write && npm run format:test",
+    "prepublishOnly": "npm run build && npm run test",
+    "test": "echo \"No Tests\""
+  },
+  "dependencies": {
+    "@tii/ui-core-framework": "1.0.0"
+  },
+  "files": [
+    "es5"
+  ],
+  "author": "Anantha_Krishnan_G",
+  "license": "ISC"
+}

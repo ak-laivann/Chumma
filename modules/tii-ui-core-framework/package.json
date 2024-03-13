@@ -1,0 +1,22 @@
+{
+  "name": "@tii/ui-core-framework",
+  "version": "1.0.0",
+  "description": "TII FE Architecture",
+  "main": "es5/index.js",
+  "types": "./es5/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist && rm -rf es5 && rm -rf build",
+    "start": "tsc -w --preserveWatchOutput",
+    "format:test": "prettier --check \"(src|tst)/**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format:write": "prettier --write \"(src|tst)/**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format": "npm run format:write && npm run format:test",
+    "test": "echo \"No Tests\""
+  },
+  "files": [
+    "es5"
+  ],
+  "author": "Anantha_Krishnan_G",
+  "license": "ISC",
+  "devDependencies": {}
+}

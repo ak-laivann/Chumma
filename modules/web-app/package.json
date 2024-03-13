@@ -1,0 +1,34 @@
+{
+  "name": "@tii/web-app",
+  "version": "1.0.0",
+  "main": "src/App.tsx",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "format:test": "prettier --check \"(src|tst)/**/*.{js,jsx,ts,tsx}\"",
+    "format:write": "prettier --write \"**/*.{md,json}\" \"(src|tst)/**/*.{js,jsx,ts,tsx}\" \"!.tmp/**\"",
+    "format": "npm run format:write && npm run format:test"
+  },
+  "files": [
+    "es5"
+  ],
+  "dependencies": {
+    "@tii/tpi-common": "1.0.0",
+    "@tii/components": "1.0.0",
+    "@tii/ui-core-framework": "1.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "author": "Anantha_Krishnan_G",
+  "license": "ISC"
+}
