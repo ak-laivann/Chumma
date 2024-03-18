@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "src/App.tsx",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
     "format:test": "prettier --check \"(src|tst)/**/*.{js,jsx,ts,tsx}\"",
     "format:write": "prettier --write \"**/*.{md,json}\" \"(src|tst)/**/*.{js,jsx,ts,tsx}\" \"!.tmp/**\"",
     "format": "npm run format:write && npm run format:test"

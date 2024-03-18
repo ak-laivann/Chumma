@@ -1,11 +1,11 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { UserContext } from "@tii/ui-core-framework";
+import { UserContext, UserContextObject } from "@tii/ui-core-framework";
 
 const queryClient = new QueryClient();
 
 function App() {
-  let values: UserContext = {
+  let values: UserContextObject = {
     mail: "",
     idToken: "",
     isSignedIn: false,
