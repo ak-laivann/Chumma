@@ -1,14 +1,12 @@
-import { FC, SVGAttributes } from "react";
+import React, { FC, LegacyRef, SVGAttributes } from "react";
 
 export interface ButtonProps<T = unknown> {
   text: string;
-  icon: Icon;
+  icon: React.ReactNode | React.ReactElement;
   onSubmitClick: (input: T) => void;
-  ref?: TIIButtonInstance;
+  ref?: LegacyRef<TIIButtonInstance>;
 }
 
 export interface TIIButtonInstance {
   setLoading: (loading: boolean) => void;
 }
-
-export type Icon = FC<SVGAttributes<SVGElement>>;
