@@ -15,7 +15,8 @@
   "dependencies": {
     "@tii/tpi-common": "1.0.0",
     "@tii/components": "1.0.0",
-    "@tii/ui-core-framework": "1.0.0"
+    "@tii/ui-core-framework": "1.0.0",
+    "@tii/tpi-maintenance-app": "1.0.0"
   },
   "browserslist": {
     "production": [

@@ -6,3 +6,4 @@ export * from "./AsyncGetAndPutUI.props";
 export * from "./AsyncGetUI.props";
 export * from "./AsyncPutUI.props";
 export * from "./AsyncUI.props";
+export * from "./FormFooter.props";

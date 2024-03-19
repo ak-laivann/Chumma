@@ -14,7 +14,7 @@ function getSubmitOptions(data: { [key: string]: string }) {
   return options;
 }
 
-export const TIISelect = (props: TIISelectType) => {
+export const TIISelect = (props: TIISelectProps) => {
   const { selectoptions, options, ...selectProps } = props;
 
   const maxTagCount = props.maxTagCount ? props.maxTagCount : "responsive";
