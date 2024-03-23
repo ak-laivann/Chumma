@@ -12,6 +12,7 @@ export interface SparesFormLayoutProps {
 }
 
 export const AddSparesDataFetcher = (): SparesFormLayoutProps => {
+  console.log("inside data fecher");
   return {
     asyncSparesUI: useAsyncPostAndPutUI<Spare>(
       usePostSpareHook(),

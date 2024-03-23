@@ -10,9 +10,10 @@ export const MaintenanceRoutes = () => {
   const SparePartAdditionPage = attachHandlers<SparesFormLayoutProps>(
     "Adding New Spares Page"
   )(AddSparesDataFetcher)(SparesFormLayout);
+  console.log("inside maintenance routes");
   return (
     <Routes>
-      <Route index element={<Navigate to={"/add"} />} />
+      <Route index element={<Navigate to={"add"} />} />
       <Route path="/add" element={<SparePartAdditionPage />} />
     </Routes>
   );

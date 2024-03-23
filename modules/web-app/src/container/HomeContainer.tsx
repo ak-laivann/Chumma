@@ -11,6 +11,8 @@ import {
   UploadOutlined,
 } from "@ant-design/icons";
 import { Layout } from "antd";
+import { SectionedItem, SideBarItem, TIISideBar } from "@tii/components";
+const { Content } = Layout;
 
 const onContactClick = () => {
   window.open("mailto:ananthakrishnan@tii.murugappa.com");
@@ -21,13 +23,32 @@ const onSignOutClick = () => {
 };
 
 export const HomeContainer = () => {
-  const { mail, buId, id } = useContext(UserContext);
+  const [collapsed, setCollapsed] = useState(false);
+  const location = useLocation();
+
   const navigate = useNavigate();
 
-  const { Content } = Layout;
+  const onSideBarItemClick = (
+    sectionId: string,
+    sideBarItem: SideBarItem
+  ): void => {
+    navigate(sideBarItem.id);
+  };
+
+  const selectedSideBarTab = location.pathname.split("/")[1];
+
+  const items: SectionedItem[] = [];
   return (
     <Layout style={{ height: "100vh", overflow: "hidden" }}>
-      <Layout.Sider />
+      {/* <TIISideBar
+        collapsed={collapsed}
+        onItemClick={onSideBarItemClick}
+        items={items}
+        onContactClick={onContactClick}
+        onLogoClick={() => navigate(`/`)}
+        logo={<AuditOutlined />}
+        selectedItemId={selectedSideBarTab}
+      /> */}
       <Layout>
         <Layout.Header />
         <Content

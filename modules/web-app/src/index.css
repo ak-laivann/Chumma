@@ -5,4 +5,10 @@ body {
   position: relative;
   -webkit-print-color-adjust: exact !important;
   print-color-adjust: exact !important;
+  background-color: rgb(6, 32, 38);
+  color: #e8e6e3;
+}
+
+html {
+  color-scheme: dark !important;
 }

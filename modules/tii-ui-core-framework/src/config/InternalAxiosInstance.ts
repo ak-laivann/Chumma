@@ -3,7 +3,7 @@ import { AuthInterceptor } from "./interceptor";
 import { InternalEndPointConfig as EndpointConfig } from "./InternalEndPointConfig";
 
 export const InternalAxiosInstance = axios.create({
-  baseURL: `${EndpointConfig}/api`, // later add /api/v1 here
+  baseURL: `${EndpointConfig["development"]}/api`, // later add /api/v1 here
   headers: {
     useMirage: false,
   },

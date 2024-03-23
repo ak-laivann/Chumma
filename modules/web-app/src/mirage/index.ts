@@ -1,16 +1,21 @@
 import { createServer } from "miragejs";
 import { ModelRegistry } from "./MirageModels";
 import { InternalEndPointConfig } from "@tii/ui-core-framework";
+import { getUser, mockGetUser } from "./Users";
 
 export function makeServer() {
   return createServer({
-    environment: "environment",
+    environment: "dev",
     models: ModelRegistry,
     routes() {
-      this.urlPrefix = `${InternalEndPointConfig}/api`;
+      console.log("inside the index file of mirage");
+      this.urlPrefix = `${InternalEndPointConfig["development"]}/api`;
       this.timing = 1000;
-      this.passthrough((request) => !(request.queryParams?.useMirage ?? false));
+      this.get("/users", mockGetUser);
+      this.passthrough((request) => !(request.queryParams?.useMirage ?? true));
     },
-    seeds(server) {},
+    seeds(server) {
+      server.create("user", getUser());
+    },
   });
 }
