@@ -40,7 +40,7 @@ export const HomeContainer = () => {
   const items: SectionedItem[] = [];
   return (
     <Layout style={{ height: "100vh", overflow: "hidden" }}>
-      {/* <TIISideBar
+      <TIISideBar
         collapsed={collapsed}
         onItemClick={onSideBarItemClick}
         items={items}
@@ -48,7 +48,7 @@ export const HomeContainer = () => {
         onLogoClick={() => navigate(`/`)}
         logo={<AuditOutlined />}
         selectedItemId={selectedSideBarTab}
-      /> */}
+      />
       <Layout>
         <Layout.Header />
         <Content
