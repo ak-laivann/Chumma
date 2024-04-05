@@ -14,7 +14,7 @@ function getSubmitOptions(data: { [key: string]: string }) {
   return options;
 }
 
-export const TIISelect = (props: TIISelectProps) => {
+export const SelectComponent = (props: TIISelectType) => {
   const { selectoptions, options, ...selectProps } = props;
 
   const maxTagCount = props.maxTagCount ? props.maxTagCount : "responsive";
@@ -35,7 +35,7 @@ export const TIISelect = (props: TIISelectProps) => {
   );
 };
 
-export const SelectComponent = (props: TIISelectProps) => {
+export const TIISelect = (props: TIISelectProps) => {
   const { showLabel, formProps, ...selectProps } = props;
   const showLabelInitialised = showLabel ?? true;
   const form = Form.useFormInstance() ?? Form.useForm()[0];
@@ -47,7 +47,7 @@ export const SelectComponent = (props: TIISelectProps) => {
       label={showLabelInitialised ? props.label : undefined}
       {...formProps}
     >
-      <TIISelect
+      <SelectComponent
         placeholder={
           props.placeholder ??
           placeHolderGenerator(

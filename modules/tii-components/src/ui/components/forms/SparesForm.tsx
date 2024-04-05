@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { SparesFormProps } from "../../../props";
 import { Typography, Form, Row, Col, Input, Switch } from "antd";
-import { TIISelect, TIITextInput, TIIFormFooter } from "../../constructs";
+import {
+  TIISelect,
+  TIITextInput,
+  TIIFormFooter,
+  CustomRequiredFormItem,
+} from "../../constructs";
 
 export const SparesForm = React.memo((props: SparesFormProps) => {
   console.log("inside the components spare");
@@ -31,7 +36,7 @@ export const SparesForm = React.memo((props: SparesFormProps) => {
             <TIITextInput label="Spare Name" name={"spareName"} required />
           </Col>
           <Col span={24}>
-            <Form.Item
+            <CustomRequiredFormItem
               label="Description"
               name={"description"}
               rules={[{ required: true, message: "Description is required" }]}
@@ -41,7 +46,7 @@ export const SparesForm = React.memo((props: SparesFormProps) => {
                 style={{ border: "1px solid grey" }}
                 placeholder="Enter the Description"
               />
-            </Form.Item>
+            </CustomRequiredFormItem>
           </Col>
           <Col span={8}>
             <TIITextInput

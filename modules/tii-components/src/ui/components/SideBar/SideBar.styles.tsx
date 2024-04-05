@@ -181,7 +181,6 @@ export const MenuWrapper = styled.div`
     // font-family: 'Circular Std ';
     font-style: normal;
     font-weight: 450;
-    font-size: 10px;
     line-height: 15px;
     letter-spacing: 0.15em;
     color: #ebbe21 !important;
