@@ -7,3 +7,5 @@ export * from "./AsyncGetUI.props";
 export * from "./AsyncPutUI.props";
 export * from "./AsyncUI.props";
 export * from "./FormFooter.props";
+export * from "./Icon.props";
+export * from "./Profile.props";

@@ -5,13 +5,11 @@ import { Menu } from "antd";
 import { If } from "../../../ui/constructs";
 import {
   SiderWrapper,
-  SidebarLogArea,
   MenuWrapper,
   SiderFooter,
   SiderFooterTII,
   SideBarContactSupport,
   ContactDesign,
-  TIIIconWrapper,
   TIIContactIconWrapper,
 } from "./SideBar.styles";
 import { ContactsOutlined } from "@ant-design/icons";
@@ -19,8 +17,7 @@ import { ContactsOutlined } from "@ant-design/icons";
 export const TIISideBar = React.memo((props: SiderProps) => {
   const copyright = String.fromCodePoint(0x00a9);
   const registered = String.fromCodePoint(0x000ae);
-  const { collapsed, onItemClick, onContactClick, items, onLogoClick, logo } =
-    props;
+  const { collapsed, onItemClick, items, onLogoClick, logo } = props;
   const menuItems: Array<MenuItemGroupType> = items.map((item) => {
     return {
       type: "group",
@@ -31,21 +28,15 @@ export const TIISideBar = React.memo((props: SiderProps) => {
         return {
           key: child.id,
           label: child.title,
-          icon: Icon,
+          icon: <Icon />,
         };
       }),
     };
   });
-  const Icon = props.logo;
+
   return (
     <SiderWrapper trigger={null} collapsible collapsed={collapsed}>
-      <SidebarLogArea onClick={props.onLogoClick} data-testid="logo">
-        <If condition={!collapsed}>{props.logo}</If>
-        <If condition={collapsed}>
-          <TIIIconWrapper>{/* <IconCollapse /> */}</TIIIconWrapper>
-        </If>
-      </SidebarLogArea>
-
+      <div style={{ marginBottom: "50px" }}></div>
       <MenuWrapper>
         <Menu
           data-testid="selections"
@@ -70,7 +61,11 @@ export const TIISideBar = React.memo((props: SiderProps) => {
           <SiderFooterTII>
             {copyright} TII{registered}
           </SiderFooterTII>
-          <SideBarContactSupport onClick={props.onContactClick}>
+          <SideBarContactSupport
+            onClick={() =>
+              window.open("mailto:ananthakrishnan@tii.murugappa.com")
+            }
+          >
             <TIIContactIconWrapper>
               <ContactsOutlined />
             </TIIContactIconWrapper>
@@ -86,7 +81,11 @@ export const TIISideBar = React.memo((props: SiderProps) => {
             {copyright} TII{registered}
           </SiderFooterTII>
           <SiderFooterTII>
-            <ContactsOutlined onClick={props.onContactClick} />
+            <ContactsOutlined
+              onClick={() =>
+                window.open("mailto:ananthakrishnan@tii.murugappa.com")
+              }
+            />
           </SiderFooterTII>
         </If>
       </SiderFooter>

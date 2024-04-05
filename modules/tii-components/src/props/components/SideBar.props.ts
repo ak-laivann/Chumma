@@ -1,24 +1,23 @@
-import React from "react";
+import { Icon } from "../constructs";
 
 export interface SiderProps {
   collapsed: boolean;
   onItemClick: (sectionId: string, SideBarItem: SideBarItem) => void;
   items: SectionedItem[];
   selectedItemId?: string;
-  onContactClick: () => void;
   onLogoClick: () => void;
-  logo: React.ReactElement | React.ReactNode;
+  logo: Icon;
 }
 
 export interface SectionedItem {
   id: string;
   title: string;
-  icon?: React.ReactNode | React.ReactElement;
+  icon?: Icon;
   expanded?: Boolean;
   data: SideBarItem[];
 }
 export interface SideBarItem {
   id: string;
   title: string;
-  icon: React.ReactNode | React.ReactElement;
+  icon: Icon;
 }
