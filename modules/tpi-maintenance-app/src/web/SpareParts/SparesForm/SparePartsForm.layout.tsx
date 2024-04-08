@@ -1,5 +1,5 @@
 import { AsyncGetAndPutUI, Spare, SparesForm } from "@tii/components";
-import { SparesFormLayoutProps } from "./SpareParts.df";
+import { SparesFormLayoutProps } from "./SparePartsForm.df";
 import { useNavigate } from "react-router";
 import { CheckOutlined } from "@ant-design/icons";
 import { message } from "antd";

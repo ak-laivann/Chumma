@@ -25,7 +25,7 @@ const onSignOutClick = () => {
 };
 
 export const HomeContainer = () => {
-  const { mail, buId, id } = useContext(UserContext);
+  // const { mail, buId, id } = useContext(UserContext);
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
 
@@ -35,60 +35,62 @@ export const HomeContainer = () => {
     sectionId: string,
     sideBarItem: SideBarItem
   ): void => {
-    navigate(sideBarItem.id);
+    if (!!sectionId) {
+      navigate(`${sectionId}/${sideBarItem.id}`);
+    } else navigate(sideBarItem.id);
   };
 
-  const selectedSideBarTab = location.pathname.split("/")[1];
-  console.log("selectedSideBarTab = ", selectedSideBarTab);
+  const selectedSideBarTab = location.pathname.split("/")[2];
 
-  const items: SectionedItem[] = [
-    {
-      id: "spares",
-      title: "Spares",
-      // @ts-ignore
-      icon: FileTextOutlined,
-      data: [
-        {
-          // @ts-ignore
-          icon: FileDoneOutlined,
-          id: "spares/listing",
-          title: "Listing",
-        },
-        {
-          // @ts-ignore
-          icon: FileDoneOutlined,
-          id: "spares/add",
-          title: "New",
-        },
-      ],
-    },
-    {
-      id: "audits",
-      title: "Audits",
-      // @ts-ignore
-      icon: AuditOutlined,
-      data: [
-        {
-          //@ts-ignore
-          icon: AuditOutlined,
-          id: "safety/audit/gemba/mine",
-          title: "Mine",
-        },
-        {
-          //@ts-ignore
-          icon: AuditOutlined,
-          id: "safety/audit/inventories/listing",
-          title: "Inventories",
-        },
-        {
-          //@ts-ignore
-          icon: AuditOutlined,
-          id: "safety/audit/government/listing",
-          title: "Government",
-        },
-      ],
-    },
-  ];
+  const maintenanceItems: SectionedItem = {
+    id: "maintenance",
+    title: "Maintenance",
+    // @ts-ignore
+    icon: FileTextOutlined,
+    data: [
+      {
+        // @ts-ignore
+        icon: FileDoneOutlined,
+        id: "listSpares",
+        title: "Spares List",
+      },
+      {
+        // @ts-ignore
+        icon: FileDoneOutlined,
+        id: "addSpare",
+        title: "Add Spares",
+      },
+    ],
+  };
+
+  const safetyRoutes: SectionedItem = {
+    id: "safety",
+    title: "Audits",
+    // @ts-ignore
+    icon: AuditOutlined,
+    data: [
+      {
+        //@ts-ignore
+        icon: AuditOutlined,
+        id: "myGemba",
+        title: "Mine",
+      },
+      {
+        //@ts-ignore
+        icon: AuditOutlined,
+        id: "listInventories",
+        title: "Inventories",
+      },
+      {
+        //@ts-ignore
+        icon: AuditOutlined,
+        id: "listGovernment",
+        title: "Government",
+      },
+    ],
+  };
+
+  const items: SectionedItem[] = [maintenanceItems, safetyRoutes];
 
   const ProfileObject = {
     displayName: "AK", //mail.split("@")[0],

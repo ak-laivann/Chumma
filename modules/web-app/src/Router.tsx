@@ -6,8 +6,8 @@ export const RootRouter = () => {
   console.log("inside root router");
   return (
     <Routes>
-      <Route index element={<Navigate to={"spares"} />} />
-      <Route path="/spares/*" element={<MaintenanceRoutes />} />
+      <Route index element={<Navigate to={"maintenance"} />} />
+      <Route path="/maintenance/*" element={<MaintenanceRoutes />} />
     </Routes>
   );
 };

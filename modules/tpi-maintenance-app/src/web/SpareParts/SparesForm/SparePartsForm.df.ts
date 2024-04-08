@@ -4,7 +4,11 @@ import {
   AsyncPostAndPutUI,
   useAsyncGetAndPutUI,
 } from "@tii/components";
-import { useGetSpareHook, usePostSpareHook, usePutSpareHook } from "../../dao";
+import {
+  useGetSpareHook,
+  usePostSpareHook,
+  usePutSpareHook,
+} from "../../../dao";
 import { useParams } from "react-router-dom";
 
 export interface SparesFormLayoutProps {
@@ -12,7 +16,6 @@ export interface SparesFormLayoutProps {
 }
 
 export const AddSparesDataFetcher = (): SparesFormLayoutProps => {
-  console.log("inside data fecher");
   return {
     asyncSparesUI: useAsyncPostAndPutUI<Spare>(
       usePostSpareHook(),
