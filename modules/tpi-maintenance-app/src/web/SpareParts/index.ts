@@ -1,2 +1,2 @@
-export * from "./SpareParts.df";
-export * from "./SpareParts.layout";
+export * from "./SparesForm";
+export * from "./SparesPartsListing";

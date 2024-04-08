@@ -4,17 +4,25 @@ import {
   AddSparesDataFetcher,
   SparesFormLayout,
   SparesFormLayoutProps,
-} from "../web/SpareParts";
+  SparesListingDataFetcher,
+  SparesListingProps,
+  SparesListingLayout,
+} from "../web";
 
 export const MaintenanceRoutes = () => {
   const SparePartAdditionPage = attachHandlers<SparesFormLayoutProps>(
     "Adding New Spares Page"
   )(AddSparesDataFetcher)(SparesFormLayout);
+
+  const SparePartsListingPage = attachHandlers<SparesListingProps>(
+    "Listing the Spares"
+  )(SparesListingDataFetcher)(SparesListingLayout);
   console.log("inside maintenance routes");
   return (
     <Routes>
-      <Route index element={<Navigate to={"add"} />} />
-      <Route path="/add" element={<SparePartAdditionPage />} />
+      <Route index element={<Navigate to={"listSpares/"} />} />
+      <Route path="listSpares" element={<SparePartsListingPage />} />
+      <Route path="addSpare" element={<SparePartAdditionPage />} />
     </Routes>
   );
 };

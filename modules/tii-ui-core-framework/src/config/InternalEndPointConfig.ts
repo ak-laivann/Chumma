@@ -1,3 +1,3 @@
 export const InternalEndPointConfig = {
-  development: "https:internalendpoint",
+  development: "https://internalendpoint.com",
 };

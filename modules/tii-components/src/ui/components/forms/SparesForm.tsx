@@ -9,7 +9,6 @@ import {
 } from "../../constructs";
 
 export const SparesForm = React.memo((props: SparesFormProps) => {
-  console.log("inside the components spare");
   const [showCupboardDetails, setShowCupboardDetails] = useState<boolean>(
     props.spareDetails.isInsideCupboard! ?? false
   );

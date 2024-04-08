@@ -48,7 +48,6 @@ export const TIISideBar = React.memo((props: SiderProps) => {
                 return data.id === menuInfo.key;
               });
               if (filteredItem) {
-                console.log(item.id, filteredItem);
                 props.onItemClick(item.id, filteredItem);
               }
             });
