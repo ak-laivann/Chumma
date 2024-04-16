@@ -7,7 +7,6 @@ import { message } from "antd";
 export const SparesFormLayout: React.FC<SparesFormLayoutProps> = (
   props: SparesFormLayoutProps
 ) => {
-  console.log("this is getting printed");
   const navigate = useNavigate();
   return (
     <props.asyncSparesUI.Wrapper confirmModalContent="Are you sure you want to create or update this as spares?">
@@ -17,10 +16,14 @@ export const SparesFormLayout: React.FC<SparesFormLayoutProps> = (
           icon: <CheckOutlined />,
           onSubmitClick: (values) => {
             props.asyncSparesUI
-              .triggerRequest({ ...values, buId: "TPI" })
+              .triggerRequest({
+                ...values,
+                buId: "TPI",
+                id: props.asyncSparesUI.getResponse()?.id,
+              })
               .then(() => {
                 message.success("Spares has been added");
-                navigate("../");
+                navigate("../spares/list");
               })
               .catch(() =>
                 message.error("Something went wrong. Please try again.")
@@ -32,7 +35,6 @@ export const SparesFormLayout: React.FC<SparesFormLayoutProps> = (
           ...(
             props.asyncSparesUI as AsyncGetAndPutUI<Spare>
           ).asyncUI1.getResponse()!,
-          isInsideCupboard: false,
         }}
       />
     </props.asyncSparesUI.Wrapper>

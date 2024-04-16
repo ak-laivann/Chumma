@@ -5,17 +5,16 @@ import { ModelRegistry } from "./MirageModels";
 import { Spare } from "@tii/components";
 
 export function getSpare(): Spare {
-  console.log("inside the getspares function");
   return {
     buId: faker.company.name(),
-    isInsideCupboard: faker.datatype.boolean(),
+    isInsideCupboard: true,
     description: faker.lorem.paragraph(3),
     id: faker.datatype.uuid(),
     minimumNumber: faker.datatype.number({ max: 3, min: 0 }),
     name: faker.lorem.word(6),
     cupboardName: faker.lorem.word(5),
     department: "MECHANICAL",
-    itemCode: faker.lorem.word(6),
+    itemCode: faker.datatype.number({ min: 100000, max: 999999 }).toString(),
     lastUpdatedBy: [],
     lastUpdatedTime: [],
     leadTime: faker.datatype.number().toString(),
@@ -28,11 +27,10 @@ export function getSpare(): Spare {
   };
 }
 
-export const mockGetSpare: RouteHandler<
+export const mockListSpare: RouteHandler<
   Registry<typeof ModelRegistry, any>,
   any
 > = (schema, request) => {
-  console.log("inside the get spare function in mirage spares file");
   const sampleData = schema.all("spare").models;
 
   return new Response(
@@ -45,4 +43,33 @@ export const mockGetSpare: RouteHandler<
       },
     }
   );
+};
+
+export const mockGetSpare: RouteHandler<
+  Registry<typeof ModelRegistry, any>,
+  any
+> = (schema, request) => {
+  const sampleData = schema.all("spare").models;
+
+  return sampleData[0].attrs;
+};
+
+export const mockPutSpare: RouteHandler<
+  Registry<typeof ModelRegistry, any>,
+  any
+> = (schema, request) => {
+  let sparesBody = JSON.parse(request.requestBody);
+  schema.create("spare", sparesBody);
+
+  return new Response(200, {}, { status: "SUCCESS" });
+};
+
+export const mockPostSpare: RouteHandler<
+  Registry<typeof ModelRegistry, any>,
+  any
+> = (schema, request) => {
+  let sparesBody = JSON.parse(request.requestBody);
+  sparesBody.id = faker.datatype.uuid();
+  schema.create("spare", sparesBody);
+  return new Response(200, {}, { id: sparesBody.id });
 };

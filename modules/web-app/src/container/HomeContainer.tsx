@@ -25,7 +25,7 @@ const onSignOutClick = () => {
 };
 
 export const HomeContainer = () => {
-  // const { mail, buId, id } = useContext(UserContext);
+  const { mail, buId, id, departmentId } = useContext(UserContext);
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
 
@@ -36,28 +36,30 @@ export const HomeContainer = () => {
     sideBarItem: SideBarItem
   ): void => {
     if (!!sectionId) {
-      navigate(`${sectionId}/${sideBarItem.id}`);
+      navigate(
+        `bu/${buId}/departments/${departmentId}/${sectionId}/${sideBarItem.id}`
+      );
     } else navigate(sideBarItem.id);
   };
 
   const selectedSideBarTab = location.pathname.split("/")[2];
 
   const maintenanceItems: SectionedItem = {
-    id: "maintenance",
-    title: "Maintenance",
+    id: "spares",
+    title: "Spares",
     // @ts-ignore
     icon: FileTextOutlined,
     data: [
       {
         // @ts-ignore
         icon: FileDoneOutlined,
-        id: "listSpares",
+        id: "list",
         title: "Spares List",
       },
       {
         // @ts-ignore
         icon: FileDoneOutlined,
-        id: "addSpare",
+        id: "add",
         title: "Add Spares",
       },
     ],
@@ -93,8 +95,8 @@ export const HomeContainer = () => {
   const items: SectionedItem[] = [maintenanceItems, safetyRoutes];
 
   const ProfileObject = {
-    displayName: "AK", //mail.split("@")[0],
-    avatar: "IVR", //mail.split("@")[0],
+    displayName: mail.split("@")[0],
+    avatar: mail.split("@")[0],
   };
 
   const onNavMenuIconClick = (a: NavMenuIconState) => {

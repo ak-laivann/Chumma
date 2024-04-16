@@ -44,7 +44,6 @@ export class SearchSparesDAO extends AsyncRequest<
   getAsyncFunction = async (): Promise<
     MultiListingDaoOutput<SparePartsResponse>
   > => {
-    console.log("inside the listing dao");
     let url = "/usePostToMultiSearch/spares";
 
     const res = await InternalAxiosInstance.post(url, this.queryParam, {

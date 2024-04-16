@@ -6,7 +6,7 @@ export interface HandlerOptions {
   Wrapper?: React.ComponentType<React.PropsWithChildren>;
 }
 
-export function attachHandlers<T extends any, AdditionalProps = {}>(
+export function attachAsyncDataWithLayout<T extends any, AdditionalProps = {}>(
   screenName: string,
   options?: HandlerOptions
 ) {
