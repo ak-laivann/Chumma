@@ -93,7 +93,7 @@ const ModalForSpareDetails = (props: { record: Partial<Spare> }) => {
         Item Code:{" "}
         <Typography.Text mark>{props.record.itemCode}</Typography.Text>
       </p>
-      <Typography.Link underline href="./view">
+      <Typography.Link underline href={`./${props.record.id}/view`}>
         Update Details
       </Typography.Link>
     </>
@@ -103,7 +103,6 @@ const ModalForSpareDetails = (props: { record: Partial<Spare> }) => {
 const UnitsDetailsWithUpdationForm: React.FC<{
   record: Partial<Spare>;
 }> = (prop: { record: Partial<Spare> }) => {
-  console.log("record = ", prop.record);
   const [modal, setModal] = useState<boolean>(false);
   const [form] = Form.useForm();
   return (
@@ -173,7 +172,6 @@ const UnitsDetailsWithUpdationForm: React.FC<{
 
 export class SparesTable extends TIITableView<Spare, TIITableViewProps<Spare>> {
   constructor(props: TIITableViewProps<Spare>) {
-    console.log("props,", props);
     super(props);
   }
   getColumnNames = (): ColumnsType<Partial<Spare>> => {

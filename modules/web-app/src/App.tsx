@@ -16,13 +16,13 @@ function App() {
   const [user, setUser] = useState<any>(null);
 
   let values: UserContextObject = {
-    mail: "",
+    mail: "AnanthaKrishnan@tii.murugappa.com",
     isSignedIn: false,
-    buId: "",
-    name: "",
-    id: "",
-    categoryId: "Not Assigned",
-    departmentId: "",
+    buId: "tpi",
+    name: "Anantha Krishnan",
+    id: "AK",
+    categoryId: "MS",
+    departmentId: "maintenance",
   };
 
   useEffect(() => {
@@ -31,8 +31,9 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <UserContext.Provider value={user}>
-        {/* theme can be changed when required, but as of now, we are using only the global style with dark mode */}
+      {/* change the values to user afterwards */}
+      <UserContext.Provider value={values}>
+        {/* theme can be changed when required */}
         <ThemeProvider theme={{}}>
           <BrowserRouter>
             {

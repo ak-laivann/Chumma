@@ -20,9 +20,7 @@ export const mockGetUser: RouteHandler<
   Registry<typeof ModelRegistry, any>,
   any
 > = (schema, request) => {
-  console.log("inside the mock get user");
   const sampleData = schema.all("user").models;
-  console.log("sample data = ", sampleData);
 
   return new Response(200, {}, sampleData[0].attrs);
 };

@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes, useNavigate } from "react-router";
-import { attachHandlers } from "@tii/ui-core-framework";
+import { attachAsyncDataWithLayout } from "@tii/ui-core-framework";
 import {
   AddSparesDataFetcher,
   SparesFormLayout,
@@ -7,22 +7,29 @@ import {
   SparesListingDataFetcher,
   SparesListingProps,
   SparesListingLayout,
+  ViewSparesDataFetcher,
 } from "../web";
 
 export const MaintenanceRoutes = () => {
-  const SparePartAdditionPage = attachHandlers<SparesFormLayoutProps>(
-    "Adding New Spares Page"
-  )(AddSparesDataFetcher)(SparesFormLayout);
+  const SparePartAdditionPage =
+    attachAsyncDataWithLayout<SparesFormLayoutProps>("Adding New Spares Page")(
+      AddSparesDataFetcher
+    )(SparesFormLayout);
 
-  const SparePartsListingPage = attachHandlers<SparesListingProps>(
+  const SparePartViewPage = attachAsyncDataWithLayout<SparesFormLayoutProps>(
+    "Viewing Spare Page"
+  )(ViewSparesDataFetcher)(SparesFormLayout);
+
+  const SparePartsListingPage = attachAsyncDataWithLayout<SparesListingProps>(
     "Listing the Spares"
   )(SparesListingDataFetcher)(SparesListingLayout);
-  console.log("inside maintenance routes");
+
   return (
     <Routes>
-      <Route index element={<Navigate to={"listSpares/"} />} />
-      <Route path="listSpares" element={<SparePartsListingPage />} />
-      <Route path="addSpare" element={<SparePartAdditionPage />} />
+      <Route index element={<Navigate to={"spares"} />} />
+      <Route path="spares/list" element={<SparePartsListingPage />} />
+      <Route path="spares/add" element={<SparePartAdditionPage />} />
+      <Route path="spares/:spareId/view" element={<SparePartViewPage />} />
     </Routes>
   );
 };

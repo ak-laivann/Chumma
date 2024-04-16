@@ -14,7 +14,6 @@ export interface SparesListingProps {
 export const SparesListingDataFetcher = (): SparesListingProps => {
   const [filterValues, setFilterValues] = useState<any>(undefined);
 
-  console.log("insid the listing datafetcher");
   const sparesListingResponseData = useMultiListingQuery<
     SparePartsResponse,
     SearchSparesDAO

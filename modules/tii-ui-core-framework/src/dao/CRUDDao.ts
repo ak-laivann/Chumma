@@ -47,18 +47,12 @@ export class CRUDDao<T extends Entity> {
     };
   };
 
-  protected pathWithId = (clientId: string, id: string) => {
-    if (this.entityPluralName.toLowerCase() === "clients") {
-      return `/${this.apiVersion}/clients/${id}`;
-    }
-    return `/${this.apiVersion}/clients/${clientId}/${this.entityPluralName}/${id}`;
+  protected pathWithId = (buId: string, id: string) => {
+    return `/${this.apiVersion}/bus/${buId}/${this.entityPluralName}/${id}`;
   };
 
-  protected pathWithoutId = (clientId: string) => {
-    if (this.entityPluralName.toLowerCase() === "clients") {
-      return `/${this.apiVersion}/clients`;
-    }
-    return `/${this.apiVersion}/clients/${clientId}/${this.entityPluralName}`;
+  protected pathWithoutId = (buId: string) => {
+    return `/${this.apiVersion}/bus/${buId}/${this.entityPluralName}`;
   };
 
   get: (

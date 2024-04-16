@@ -32,7 +32,7 @@ export const SparesForm = React.memo((props: SparesFormProps) => {
       >
         <Row gutter={[24, 0]}>
           <Col span={24}>
-            <TIITextInput label="Spare Name" name={"spareName"} required />
+            <TIITextInput label="Spare Name" name={"name"} required />
           </Col>
           <Col span={24}>
             <CustomRequiredFormItem
@@ -100,10 +100,11 @@ export const SparesForm = React.memo((props: SparesFormProps) => {
           <Col span={24}>
             <Form.Item name={"isInsideCupboard"}>
               <Switch
+                defaultChecked={props.spareDetails?.isInsideCupboard ?? false}
                 onChange={setShowCupboardDetails}
                 size="default"
-                checkedChildren="Is a cupboard item"
-                unCheckedChildren="Not a cupboard item"
+                checkedChildren="Not a cupboard item"
+                unCheckedChildren="Is a cupboard item"
               />
             </Form.Item>
           </Col>
