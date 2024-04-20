@@ -1,15 +1,18 @@
 import { Route, Routes } from "react-router-dom";
 import { MaintenanceRoutes } from "@tii/tpi-maintenance-app";
-import { useContext } from "react";
-import { UserContext } from "@tii/ui-core-framework";
+import { SafetyRoutes } from "@tii/tpi-safety-app";
 
 export const RootRouter = () => {
-  const { departmentId } = useContext(UserContext);
-  const Children =
-    departmentId === "maintenance" ? <MaintenanceRoutes /> : <></>;
   return (
     <Routes>
-      <Route path={`bu/:buId/departments/:departmentId/*`} element={Children} />
+      <Route
+        path={`bu/:buId/departments/:departmentId/spares/*`}
+        element={<MaintenanceRoutes />}
+      />
+      <Route
+        path={`bu/:buId/departments/:departmentId/audits/*`}
+        element={<SafetyRoutes />}
+      />
     </Routes>
   );
 };

@@ -1,16 +1,14 @@
 import { RootRouter } from "../Router";
 import { useContext, useState } from "react";
 import { UserContext } from "@tii/ui-core-framework";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
-  SolutionOutlined,
   AuditOutlined,
   FileDoneOutlined,
   FileTextOutlined,
-  CalendarOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
-import { Col, Form, Layout, Row, Select, Typography } from "antd";
+import { Layout } from "antd";
 import {
   SectionedItem,
   SideBarItem,
@@ -42,7 +40,8 @@ export const HomeContainer = () => {
     } else navigate(sideBarItem.id);
   };
 
-  const selectedSideBarTab = location.pathname.split("/")[2];
+  // the selected side bar tab is the id of the menu item, that should be passed to the sidebar so as to get it highlighted
+  const selectedSideBarTab = location.pathname.split("/")[6];
 
   const maintenanceItems: SectionedItem = {
     id: "spares",
@@ -58,7 +57,7 @@ export const HomeContainer = () => {
       },
       {
         // @ts-ignore
-        icon: FileDoneOutlined,
+        icon: FileTextOutlined,
         id: "add",
         title: "Add Spares",
       },
@@ -66,7 +65,7 @@ export const HomeContainer = () => {
   };
 
   const safetyRoutes: SectionedItem = {
-    id: "safety",
+    id: "audits",
     title: "Audits",
     // @ts-ignore
     icon: AuditOutlined,
@@ -74,20 +73,26 @@ export const HomeContainer = () => {
       {
         //@ts-ignore
         icon: AuditOutlined,
-        id: "myGemba",
+        id: "all",
+        title: "List",
+      },
+      {
+        //@ts-ignore
+        icon: AuditOutlined,
+        id: "new",
+        title: "New Audit",
+      },
+      {
+        //@ts-ignore
+        icon: UploadOutlined,
+        id: "upload",
+        title: "Upload",
+      },
+      {
+        //@ts-ignore
+        icon: UploadOutlined,
+        id: "mine",
         title: "Mine",
-      },
-      {
-        //@ts-ignore
-        icon: AuditOutlined,
-        id: "listInventories",
-        title: "Inventories",
-      },
-      {
-        //@ts-ignore
-        icon: AuditOutlined,
-        id: "listGovernment",
-        title: "Government",
       },
     ],
   };

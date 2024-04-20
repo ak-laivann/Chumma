@@ -1,0 +1,26 @@
+{
+  "name": "@tii/tpi-safety-app",
+  "version": "1.0.0",
+  "description": "TPI Safety Pages",
+  "main": "es5/index.js",
+  "types": "./es5/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist && rm -rf es5 && rm -rf build",
+    "start": "tsc -w --preserveWatchOutput",
+    "format:test": "prettier --check \"src/**/*.tsx\" \"src/**/*.ts\"",
+    "format:write": "prettier --write \"**/*.{md,json}\" \"(src|tst)/**/*.{js,jsx,ts,tsx}\" \"!.tmp/**\"",
+    "format": "npm run format:write && npm run format:test",
+    "test": "echo \"No Tests\""
+  },
+  "files": [
+    "es5"
+  ],
+  "dependencies": {
+    "@tii/tpi-common": "1.0.0",
+    "@tii/ui-core-framework": "1.0.0",
+    "@tii/components": "1.0.0"
+  },
+  "author": "Anantha_Krishnan_G",
+  "license": "ISC"
+}

@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useNavigate } from "react-router";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { attachAsyncDataWithLayout } from "@tii/ui-core-framework";
 import {
   AddSparesDataFetcher,
@@ -23,13 +23,11 @@ export const MaintenanceRoutes = () => {
   const SparePartsListingPage = attachAsyncDataWithLayout<SparesListingProps>(
     "Listing the Spares"
   )(SparesListingDataFetcher)(SparesListingLayout);
-
   return (
     <Routes>
-      <Route index element={<Navigate to={"spares"} />} />
-      <Route path="spares/list" element={<SparePartsListingPage />} />
-      <Route path="spares/add" element={<SparePartAdditionPage />} />
-      <Route path="spares/:spareId/view" element={<SparePartViewPage />} />
+      <Route index path="list" element={<SparePartsListingPage />} />
+      <Route path="add" element={<SparePartAdditionPage />} />
+      <Route path=":spareId/view" element={<SparePartViewPage />} />
     </Routes>
   );
 };
