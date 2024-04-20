@@ -1,5 +1,5 @@
 import { HomeContainer } from "./HomeContainer";
-import { Route, Routes } from "react-router";
+import { Route, Routes } from "react-router-dom";
 
 export const RootContainer = () => {
   return (
