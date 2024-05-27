@@ -109,34 +109,37 @@ export const HomeContainer = () => {
   };
 
   return (
-    <Layout style={{ height: "100vh", overflow: "hidden" }}>
-      <TIISideBar
-        collapsed={collapsed}
-        onItemClick={onSideBarItemClick}
-        items={items}
-        onLogoClick={() => navigate(`/`)}
-        // @ts-ignore
-        logo={AuditOutlined}
-        selectedItemId={selectedSideBarTab}
-      />
-      <Layout>
-        <Header
-          onSignOutClick={onSignOutClick}
-          onNavMenuIconClick={onNavMenuIconClick}
-          profile={ProfileObject}
-          navMenuIconState={NavMenuIconState.EXPANDED}
+    <>
+      <Layout style={{ height: "100vh", overflow: "hidden" }}>
+        <TIISideBar
+          collapsed={collapsed}
+          onItemClick={onSideBarItemClick}
+          items={items}
+          onLogoClick={() => navigate(`/`)}
+          // @ts-ignore
+          logo={AuditOutlined}
+          selectedItemId={selectedSideBarTab}
         />
-        <Content
-          style={{
-            margin: "24px 16px",
-            height: "100vh",
-            overflowY: "scroll",
-            overflowX: "hidden",
-          }}
-        >
-          <RootRouter />
-        </Content>
+        <Layout>
+          <Header
+            onSignOutClick={onSignOutClick}
+            onNavMenuIconClick={onNavMenuIconClick}
+            profile={ProfileObject}
+            navMenuIconState={NavMenuIconState.EXPANDED}
+          />
+          <Content
+            style={{
+              margin: "24px 16px",
+              padding: "0px 10px 0px 10px",
+              height: "100vh",
+              overflowY: "scroll",
+              overflowX: "hidden",
+            }}
+          >
+            <RootRouter />
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+    </>
   );
 };

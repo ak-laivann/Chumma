@@ -9,6 +9,8 @@ import {
   mockPutSpare,
   mockPostSpare,
 } from "./Spares";
+import { mockUploadAuditFile } from "./UploadAuditFile";
+import { getAuditOwnership, mockListAuditOwnerships } from "./Audit";
 
 export function makeServer() {
   return createServer({
@@ -19,7 +21,9 @@ export function makeServer() {
 
       this.timing = 1000;
       this.get("/users", mockGetUser);
+      this.post("/uploadAuditFile", mockUploadAuditFile);
       this.post("/usePostToMultiSearch/spares", mockListSpare);
+      this.post("/usePostToMultiSearch/audits", mockListAuditOwnerships);
       this.get("/v1/bus/:buId/spares/:spareId", mockGetSpare);
       this.put("/v1/bus/:buId/spares/:spareId", mockPutSpare);
       this.post("/v1/bus/:buId/spares", mockPostSpare);
@@ -29,6 +33,7 @@ export function makeServer() {
       server.create("user", getUser());
       for (let i = 0; i < 100; i++) {
         server.create("spare", getSpare());
+        server.create("audit", getAuditOwnership());
       }
     },
   });
