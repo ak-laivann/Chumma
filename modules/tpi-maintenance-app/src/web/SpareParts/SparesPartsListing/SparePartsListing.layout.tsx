@@ -26,7 +26,7 @@ export const SparesListingLayout: React.FunctionComponent<
                 <Col>
                   <TIIButton
                     icon={<PlusOutlined />}
-                    onClick={() => navigate("../spares/add")}
+                    onClick={() => navigate("../add")}
                     children="Add New Spare"
                     type="primary"
                   />
