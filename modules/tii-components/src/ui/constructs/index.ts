@@ -8,3 +8,4 @@ export * from "./TIIError";
 export * from "./AsyncUI";
 export * from "./TIIButtonAndLink";
 export * from "./TIIFormFooter";
+export * from "./TIIDatePicker";

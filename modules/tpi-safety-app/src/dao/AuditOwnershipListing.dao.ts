@@ -40,7 +40,7 @@ export class GetAuditOwnershipListingDAO extends AsyncRequest<
   > => {
     let url = "/usePostToMultiSearch/audits";
 
-    const res = await InternalAxiosInstance.post(url, this, {
+    const res = await InternalAxiosInstance.post(url, this.queryParam, {
       params: {
         from: this.contentFrom,
         size: this.pageSize,

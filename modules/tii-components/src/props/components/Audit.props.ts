@@ -4,13 +4,21 @@ export enum AuditStatus {
   OPEN = "Open",
   IN_PROGRESS = "In Progress",
   CLOSED = "Closed",
-  RE_ASSIGNED = "ReAssigned",
+  RE_ASSIGNED = "Re Assigned",
   ASSIGNED = "Assigned",
   PENDING_VERIFICATION = "Pending Verification",
 }
 
+export enum AuditTypes {
+  LEADERSHIP = "Leadership",
+  CYCLIC_SAFETY = "Cyclic Safety",
+  INTERNAL = "Internal",
+  ISO = "Iso",
+  EXTERNAL = "External",
+}
+
 export interface Audit extends Entity {
-  type: string;
+  type: keyof typeof AuditTypes;
   date: string;
   auditorNames: string[];
   zone: number;
