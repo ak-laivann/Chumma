@@ -9,3 +9,4 @@ export * from "./AsyncUI.props";
 export * from "./FormFooter.props";
 export * from "./Icon.props";
 export * from "./Profile.props";
+export * from "./FilterBar.props";
