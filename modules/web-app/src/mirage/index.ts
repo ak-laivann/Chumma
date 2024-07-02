@@ -10,8 +10,13 @@ import {
   mockPostSpare,
 } from "./Spares";
 import { mockUploadAuditFile } from "./UploadAuditFile";
-import { getAuditOwnership, mockListAuditOwnerships } from "./Audit";
-import { AuditStatus } from "@tii/components";
+import {
+  getAuditOwnership,
+  mockListAuditOwnerships,
+  mockGetAudit,
+  mockPostAudit,
+  mockPutAudit,
+} from "./Audit";
 
 export function makeServer() {
   return createServer({
@@ -28,12 +33,16 @@ export function makeServer() {
       this.get("/v1/bus/:buId/spares/:spareId", mockGetSpare);
       this.put("/v1/bus/:buId/spares/:spareId", mockPutSpare);
       this.post("/v1/bus/:buId/spares", mockPostSpare);
+      this.get("/v1/bus/:buId/audits/:auditId", mockGetAudit);
+      this.put("/v1/bus/:buId/audits/:auditId", mockPutAudit);
+      this.post("/v1/bus/:buId/audits", mockPostAudit);
       this.passthrough();
     },
     seeds(server) {
       server.create("user", getUser());
       for (let i = 0; i < 100; i++) {
         server.create("spare", getSpare());
+        server.create("audit", getAuditOwnership("ASSIGNED"));
       }
       for (let i = 0; i < 79; i++) {
         server.create("assigned", getAuditOwnership("ASSIGNED"));

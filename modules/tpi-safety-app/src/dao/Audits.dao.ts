@@ -4,12 +4,19 @@ import {
   AsyncRequest,
   MultiListingDaoOutput,
   InternalAxiosInstance,
+  generateCRUDHooks,
 } from "@tii/ui-core-framework";
 
 export interface AuditOwnershipListingResponse {
   total: number;
   records: Audit[];
 }
+
+export const {
+  useGetHook: useGetAuditHook,
+  usePostHook: usePostAuditHook,
+  usePutHook: usePutAuditHook,
+} = generateCRUDHooks<Audit>("audits", InternalAxiosInstance, true);
 
 export class GetAuditOwnershipListingDAO extends AsyncRequest<
   MultiListingDaoOutput<AuditOwnershipListingResponse>
