@@ -1,2 +1,2 @@
 export * from "./AuditFileUpload.dao";
-export * from "./AuditOwnershipListing.dao";
+export * from "./Audits.dao";

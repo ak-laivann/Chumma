@@ -2,12 +2,32 @@ import {
   useMultiListingQuery,
   UseListingResponseType,
 } from "@tii/ui-core-framework";
-import { AsyncGetUI, AuditStatus, useAsyncGetUI } from "@tii/components";
+import {
+  AsyncGetUI,
+  Audit,
+  AuditStatus,
+  AuditTypes,
+  useAsyncGetUI,
+} from "@tii/components";
 import { useState } from "react";
 import {
   AuditOwnershipListingResponse,
   GetAuditOwnershipListingDAO,
 } from "../../../dao";
+
+interface AuditListingSearch {
+  auditorName?: string;
+  zone?: number;
+  department?: string;
+  responsibility?: string;
+  overdueStart?: string;
+  overdueEnd?: string;
+  targetStartDate?: string;
+  targetEndDate?: string;
+  auditDateStartDate?: string;
+  auditDateEndDate?: string;
+  type?: string;
+}
 
 export interface AuditListingPageProps {
   assignedResponse: AsyncGetUI<
@@ -28,7 +48,7 @@ export interface AuditListingPageProps {
   verifyResponse: AsyncGetUI<
     UseListingResponseType<AuditOwnershipListingResponse>
   >;
-  onSearch: (searchParams: any) => void;
+  onSearch: (searchParams: AuditListingSearch) => void;
 }
 
 const toCamelCase = (str: string) => {
@@ -45,7 +65,9 @@ const toCamelCase = (str: string) => {
 const auditStatuses = Object.values(AuditStatus).map(toCamelCase);
 
 export const AuditListingDataFetcher = (): AuditListingPageProps => {
-  const [filterValues, setFilterValues] = useState<any>(undefined);
+  const [filterValues, setFilterValues] = useState<
+    AuditListingSearch | undefined
+  >(undefined);
 
   const auditListingResponseData = useMultiListingQuery<
     AuditOwnershipListingResponse,
@@ -57,6 +79,7 @@ export const AuditListingDataFetcher = (): AuditListingPageProps => {
     auditStatuses.map((i) => {
       return {
         queryId: i,
+        ...filterValues,
       };
     })
   );

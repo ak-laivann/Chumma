@@ -1,7 +1,7 @@
 import React from "react";
 import { SparesListingProps } from "./SparePartsListing.df";
 import { SparesTable, TIIButton } from "@tii/components";
-import { Button, Col, Row, Tabs } from "antd";
+import { Col, Row, Tabs } from "antd";
 import { PlusOutlined, ReloadOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 

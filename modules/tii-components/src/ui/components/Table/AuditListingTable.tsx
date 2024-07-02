@@ -99,6 +99,19 @@ export class AuditsTable extends TIITableView<Audit, TIITableViewProps<Audit>> {
         key: "overdue",
         dataIndex: "overdueDate",
       },
+      {
+        title: "Action",
+        key: "view",
+        render: (_, record) => {
+          return (
+            <Typography.Link
+              children="View"
+              underline
+              href={`./${record.id}/view`}
+            />
+          );
+        },
+      },
     ];
     return columns;
   };
