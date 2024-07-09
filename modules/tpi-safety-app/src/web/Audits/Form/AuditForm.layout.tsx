@@ -17,6 +17,8 @@ export const AuditFormLayout: React.FC<AuditFormLayoutProps> = (
             props.asyncAuditUI as AsyncGetAndPutUI<Audit>
           ).asyncUI1.getResponse()!,
         }}
+        readonly={props.disabled}
+        showCorrectedImage={props.showCorrectedImage}
         onCancel={() => navigate("..")}
         submitBtnProps={{
           icon: <CheckOutlined />,

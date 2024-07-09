@@ -14,20 +14,30 @@ import {
   usePutAuditHook,
 } from "../../../dao";
 
-export interface AuditFormLayoutProps {
+export interface AuditFormAccessProps {
+  showCorrectedImage: boolean;
+  disabled: boolean;
+}
+
+export interface AuditFormLayoutProps extends AuditFormAccessProps {
   asyncAuditUI: AsyncGetAndPutUI<Audit> | AsyncPostAndPutUI<Audit>;
 }
 
-export const AddAuditsDataFetcher = (): AuditFormLayoutProps => {
+export const AddAuditsDataFetcher = (
+  props: AuditFormAccessProps
+): AuditFormLayoutProps => {
   return {
     asyncAuditUI: useAsyncPostAndPutUI<Audit>(
       usePostAuditHook(),
       usePutAuditHook()
     ),
+    ...props,
   };
 };
 
-export const ViewAuditsDataFetcher = (): AuditFormLayoutProps => {
+export const ViewAuditsDataFetcher = (
+  props: AuditFormAccessProps
+): AuditFormLayoutProps => {
   const { buId, departmentId } = useContext(UserContext);
   const { auditId } = useParams();
   return {
@@ -35,5 +45,6 @@ export const ViewAuditsDataFetcher = (): AuditFormLayoutProps => {
       useGetAuditHook(`tii_${buId}_${departmentId}`, auditId),
       usePutAuditHook()
     ),
+    ...props,
   };
 };

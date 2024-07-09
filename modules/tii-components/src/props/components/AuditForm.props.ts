@@ -10,4 +10,5 @@ export interface AuditFormProps {
   onCancel: () => void;
   form?: FormInstance<AuditFormType>;
   readonly?: boolean;
+  showCorrectedImage?: boolean;
 }
