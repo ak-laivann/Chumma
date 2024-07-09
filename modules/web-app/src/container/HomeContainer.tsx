@@ -88,16 +88,27 @@ export const HomeContainer = () => {
         id: "upload",
         title: "Upload",
       },
-      {
-        //@ts-ignore
-        icon: UploadOutlined,
-        id: "mine",
-        title: "Mine",
-      },
     ],
   };
 
-  const items: SectionedItem[] = [maintenanceItems, safetyRoutes];
+  const items: SectionedItem[] = [
+    maintenanceItems,
+    safetyRoutes,
+    {
+      data: [
+        {
+          // @ts-ignore
+          icon: AuditOutlined,
+          id: "math",
+          title: "Mathematics",
+        },
+      ],
+      id: "learn",
+      title: "Logical Reasoning",
+      // @ts-ignore
+      icon: AuditOutlined,
+    },
+  ];
 
   const ProfileObject = {
     displayName: mail.split("@")[0],

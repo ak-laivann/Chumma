@@ -1,6 +1,6 @@
 import React from "react";
 import { AuditFormProps, AuditFormType } from "../../../props";
-import { Col, Collapse, DatePicker, Form, Row, Typography } from "antd";
+import { Col, Collapse, DatePicker, Form, Row, Typography, Upload } from "antd";
 import {
   CustomRequiredFormItem as FormItem,
   TIIFormFooter,
@@ -10,12 +10,14 @@ import {
 } from "../../constructs";
 import {
   CalendarTwoTone,
+  CameraTwoTone,
   CaretRightFilled,
   CompassTwoTone,
   ReconciliationTwoTone,
   ScheduleTwoTone,
 } from "@ant-design/icons";
 import moment from "moment-timezone";
+import { DraggerProps } from "antd/lib/upload";
 
 const AuditDetailsColor = "#3498DB";
 const DateDetailsColor = "#E74C3C";
@@ -30,9 +32,38 @@ export const AuditForm = React.memo((props: AuditFormProps) => {
       ? moment(props.auditDetails.targetDate)
       : undefined,
   };
+
+  const uploadProps: DraggerProps = {
+    name: "file",
+    multiple: false,
+    accept: ".jpg,.jpeg,.svg,.png",
+    maxCount: 1,
+    beforeUpload: () => {
+      /* 
+        returning false,
+        because once you select the file, 
+        the upload component will call the url that would be specified in the action prop of draggerprops 
+        or calls empty string with method "POST", 
+        so overriding that by returning false. 
+        And we wouldnt be needing this to be tested, so using istanbul ignore next.
+      */
+
+      /* istanbul ignore next */
+      return false;
+    },
+    progress: {
+      strokeColor: {
+        "0%": "#108ee9",
+        "100%": "#87d068",
+      },
+      strokeWidth: 3,
+      format: (percent) => percent && `${parseFloat(percent.toFixed(2))}%`,
+    },
+  };
   return (
     <>
       <Form
+        disabled={props.readonly}
         form={form}
         name="auditDetails"
         initialValues={initialValue}
@@ -224,6 +255,55 @@ export const AuditForm = React.memo((props: AuditFormProps) => {
                   required
                 />
               </Col>
+              <Col span={24}>
+                <FormItem
+                  required={true}
+                  name={"observationImage"}
+                  label="Observation Image"
+                >
+                  <Upload.Dragger
+                    {...uploadProps}
+                    children={
+                      <>
+                        <p className="ant-upload-drag-icon">
+                          <CameraTwoTone twoToneColor={"blue"} />
+                        </p>
+                        <p className="ant-upload-text">
+                          Click or drag file to this area to upload
+                        </p>
+                        <p className="ant-upload-hint">
+                          Upload the Observation Image and don't spam. Supported
+                          file types - *.jpg,.jpeg,.svg,.png
+                        </p>
+                      </>
+                    }
+                  />
+                </FormItem>
+              </Col>
+              {props.showCorrectedImage && (
+                <Col span={24}>
+                  <FormItem name={"correctedImage"} label="Corrected Image">
+                    <Upload.Dragger
+                      disabled={false}
+                      {...uploadProps}
+                      children={
+                        <>
+                          <p className="ant-upload-drag-icon">
+                            <CameraTwoTone twoToneColor={"green"} />
+                          </p>
+                          <p className="ant-upload-text">
+                            Click or drag file to this area to upload
+                          </p>
+                          <p className="ant-upload-hint">
+                            Upload the Corrected Image and don't spam. Supported
+                            file types - *.jpg,.jpeg,.svg,.png
+                          </p>
+                        </>
+                      }
+                    />
+                  </FormItem>
+                </Col>
+              )}
             </Row>
           </Collapse.Panel>
         </Collapse>
