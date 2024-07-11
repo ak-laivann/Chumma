@@ -1,8 +1,7 @@
 import { Entity } from "@tii/ui-core-framework";
+import { UploadFile } from "antd";
 
 export enum AuditStatus {
-  OPEN = "Open",
-  IN_PROGRESS = "In Progress",
   CLOSED = "Closed",
   RE_ASSIGNED = "Re Assigned",
   ASSIGNED = "Assigned",
@@ -31,4 +30,6 @@ export interface Audit extends Entity {
   completionStatus: keyof typeof AuditStatus; // Dont Show
   comments: string; // Description
   overdueDate: string; // Dont Show
+  observationImage?: UploadFile[];
+  correctedImage?: UploadFile[];
 }

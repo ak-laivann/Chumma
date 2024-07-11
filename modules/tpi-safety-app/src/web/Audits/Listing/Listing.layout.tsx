@@ -119,19 +119,6 @@ export const AuditOwnershipListingLayout: React.FunctionComponent<
           </props.closedResponse.Wrapper>
         </Tabs.TabPane>
         <Tabs.TabPane
-          tab={AuditStatus.IN_PROGRESS}
-          key={AuditStatus.IN_PROGRESS}
-        >
-          <props.progressResponse.Wrapper>
-            <AuditsTable {...props.progressResponse.getResponse()!} />
-          </props.progressResponse.Wrapper>
-        </Tabs.TabPane>
-        <Tabs.TabPane tab={AuditStatus.OPEN} key={AuditStatus.OPEN}>
-          <props.openResponse.Wrapper>
-            <AuditsTable {...props.openResponse.getResponse()!} />
-          </props.openResponse.Wrapper>
-        </Tabs.TabPane>
-        <Tabs.TabPane
           tab={AuditStatus.PENDING_VERIFICATION}
           key={AuditStatus.PENDING_VERIFICATION}
         >

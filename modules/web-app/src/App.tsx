@@ -16,13 +16,13 @@ function App() {
   const [user, setUser] = useState<any>(null);
 
   let values: UserContextObject = {
-    mail: "AnanthaKrishnan@tii.murugappa.com",
+    mail: "ChellaGowtham@tii.murugappa.com",
     isSignedIn: false,
     buId: "tpi",
-    name: "Anantha Krishnan",
-    id: "AK",
+    name: "Chella Gowtham",
+    id: "CG",
     categoryId: "MS",
-    departmentId: "maintenance",
+    departmentId: "safety",
   };
 
   useEffect(() => {

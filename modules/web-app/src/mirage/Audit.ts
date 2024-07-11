@@ -42,26 +42,45 @@ export function getAuditOwnership(i: Audit["completionStatus"]): Audit {
     "Canteen",
     "Packing",
   ];
+
   return {
-    auditorNames: [faker.name.fullName()],
-    comments: faker.lorem.lines(2),
-    completionStatus: i,
+    auditorNames: ["Karunagaran"],
+    comments:
+      "Pumps can be arranged based on the machines used in order to track better for maintenance", //faker.lorem.lines(2),
+    completionStatus: "PENDING_VERIFICATION", //i,
     buId: faker.company.name(),
     id: faker.datatype.uuid(),
-    date: faker.date.soon(faker.datatype.number()).toString(),
-    department:
-      departments[
-        faker.datatype.number({ min: 0, max: departments.length - 1 })
-      ],
-    locationOrMachine: faker.lorem.paragraphs(4),
-    observation: faker.lorem.paragraphs(3),
-    targetDate: faker.date.soon(faker.datatype.number()).toString(),
+    date: "2024-07-09T08:03:04.703Z", //faker.date.soon(faker.datatype.number()).toString(),
+    department: "Mech. Maintenance",
+    // departments[
+    //   faker.datatype.number({ min: 0, max: departments.length - 1 })
+    // ],
+    locationOrMachine: "Spares Room", //faker.lorem.paragraphs(4),
+    observation:
+      "The pumps needed to be arranged based on some calibrated unit posing 1S NC", //faker.lorem.paragraphs(3),
+    targetDate: "2024-07-25T08:03:08.269Z", //faker.date.soon(faker.datatype.number()).toString(),
     overdueDate:
       faker.datatype.number({ min: 1, max: 100 }).toString() + " " + "days",
-    recommendation: faker.lorem.paragraphs(2),
-    responsibility: [faker.name.firstName()],
-    type: types[faker.datatype.number({ min: 0, max: types.length - 1 })],
-    zone: faker.datatype.number({ min: 1, max: 25 }),
+    recommendation: "Follow 5S Methodology", //faker.lorem.paragraphs(2),
+    responsibility: ["Anantha Krishnan"],
+    type: "LEADERSHIP", //types[faker.datatype.number({ min: 0, max: types.length - 1 })],
+    zone: 20, //  faker.datatype.number({ min: 1, max: 25 }),
+    observationImage: [
+      {
+        uid: "-1",
+        status: "done",
+        name: "Bay Clearing.jpeg",
+        url: "http://www.baidu.com/xxx.png",
+      },
+    ],
+    correctedImage: [
+      {
+        uid: "-11",
+        status: "done",
+        name: "Compressor yard Cleaning.jpeg",
+        url: "http://www.baidu.com/xxx.png",
+      },
+    ],
   };
 }
 
@@ -77,6 +96,7 @@ export const mockListAuditOwnerships: RouteHandler<
 
   const responseData = auditStatuses.reduce((acc, status) => {
     const models = schema.all(status).models;
+    console.log("models,", models);
 
     if (!!requestBody[0].type && requestBody[0].type !== "all") {
       const type = requestBody[0].type;

@@ -42,28 +42,24 @@ export function makeServer() {
       server.create("user", getUser());
       for (let i = 0; i < 100; i++) {
         server.create("spare", getSpare());
-        server.create("audit", getAuditOwnership("ASSIGNED"));
       }
-      for (let i = 0; i < 79; i++) {
-        server.create("assigned", getAuditOwnership("ASSIGNED"));
-      }
-      for (let i = 0; i < 68; i++) {
-        server.create("closed", getAuditOwnership("CLOSED"));
-      }
-      for (let i = 0; i < 55; i++) {
-        server.create("inProgress", getAuditOwnership("IN_PROGRESS"));
-      }
-      for (let i = 0; i < 20; i++) {
-        server.create("open", getAuditOwnership("OPEN"));
-      }
-      for (let i = 0; i < 123; i++) {
-        server.create(
-          "pendingVerification",
-          getAuditOwnership("PENDING_VERIFICATION")
-        );
-      }
+      // for (let i = 0; i < 282; i++) {
+      server.create("audit", getAuditOwnership("ASSIGNED"));
+      // }
+      // for (let i = 0; i < 79; i++) {
+      // server.create("assigned", getAuditOwnership("ASSIGNED"));
+      // }
+      // for (let i = 0; i < 68; i++) {
+      // server.create("closed", getAuditOwnership("CLOSED"));
+      // }
+      // for (let i = 0; i < 123; i++) {
+      server.create(
+        "pendingVerification",
+        getAuditOwnership("PENDING_VERIFICATION")
+      );
+      // }
       for (let i = 0; i < 12; i++) {
-        server.create("reAssigned", getAuditOwnership("RE_ASSIGNED"));
+        // server.create("reAssigned", getAuditOwnership("RE_ASSIGNED"));
       }
     },
   });
