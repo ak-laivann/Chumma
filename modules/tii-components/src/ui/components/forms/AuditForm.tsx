@@ -3,6 +3,7 @@ import { AuditFormProps, AuditFormType } from "../../../props";
 import { Col, Collapse, DatePicker, Form, Row, Typography, Upload } from "antd";
 import {
   CustomRequiredFormItem as FormItem,
+  TIIButton,
   TIIFormFooter,
   TIISelect,
   TIITextAreaComponent,
@@ -12,6 +13,7 @@ import {
   CalendarTwoTone,
   CameraTwoTone,
   CaretRightFilled,
+  CheckCircleTwoTone,
   CompassTwoTone,
   ReconciliationTwoTone,
   ScheduleTwoTone,
@@ -62,6 +64,17 @@ export const AuditForm = React.memo((props: AuditFormProps) => {
   };
   return (
     <>
+      {props.auditDetails.completionStatus === "PENDING_VERIFICATION" && (
+        <Row gutter={[24, 24]}>
+          <Col span={21}></Col>
+          <Col span={3}>
+            <TIIButton type="primary" size="large">
+              ReAssign
+            </TIIButton>
+          </Col>
+          <Col span={24}></Col>
+        </Row>
+      )}
       <Form
         disabled={props.readonly}
         form={form}
@@ -263,6 +276,7 @@ export const AuditForm = React.memo((props: AuditFormProps) => {
                 >
                   <Upload.Dragger
                     {...uploadProps}
+                    fileList={props.auditDetails?.observationImage}
                     children={
                       <>
                         <p className="ant-upload-drag-icon">
@@ -286,6 +300,7 @@ export const AuditForm = React.memo((props: AuditFormProps) => {
                     <Upload.Dragger
                       disabled={false}
                       {...uploadProps}
+                      fileList={props.auditDetails?.correctedImage}
                       children={
                         <>
                           <p className="ant-upload-drag-icon">
@@ -316,6 +331,15 @@ export const AuditForm = React.memo((props: AuditFormProps) => {
             form?.submit()!;
           },
         }}
+        draft={
+          props.auditDetails.completionStatus === "PENDING_VERIFICATION"
+            ? {
+                text: "Verified",
+                onSubmitClick: () => {},
+                icon: <CheckCircleTwoTone />,
+              }
+            : undefined
+        }
         secondaryLink={{
           text: "Cancel",
           onSubmitClick: () => props.onCancel(),

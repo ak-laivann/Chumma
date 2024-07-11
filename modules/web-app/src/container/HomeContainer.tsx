@@ -64,31 +64,36 @@ export const HomeContainer = () => {
     ],
   };
 
-  const safetyRoutes: SectionedItem = {
-    id: "audits",
-    title: "Audits",
-    // @ts-ignore
-    icon: AuditOutlined,
-    data: [
+  const safetyData = [
+    {
+      icon: AuditOutlined,
+      id: "all",
+      title: "List",
+    },
+  ];
+
+  if (departmentId == "safety") {
+    safetyData.push(
       {
-        //@ts-ignore
-        icon: AuditOutlined,
-        id: "all",
-        title: "List",
-      },
-      {
-        //@ts-ignore
         icon: AuditOutlined,
         id: "new",
         title: "New Audit",
       },
       {
-        //@ts-ignore
         icon: UploadOutlined,
         id: "upload",
         title: "Upload",
-      },
-    ],
+      }
+    );
+  }
+
+  const safetyRoutes: SectionedItem = {
+    id: "audits",
+    title: "Audits",
+    // @ts-ignore
+    icon: AuditOutlined,
+    // @ts-ignore
+    data: safetyData,
   };
 
   const items: SectionedItem[] = [

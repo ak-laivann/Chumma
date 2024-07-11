@@ -39,12 +39,6 @@ export interface AuditListingPageProps {
   reassignedResponse: AsyncGetUI<
     UseListingResponseType<AuditOwnershipListingResponse>
   >;
-  openResponse: AsyncGetUI<
-    UseListingResponseType<AuditOwnershipListingResponse>
-  >;
-  progressResponse: AsyncGetUI<
-    UseListingResponseType<AuditOwnershipListingResponse>
-  >;
   verifyResponse: AsyncGetUI<
     UseListingResponseType<AuditOwnershipListingResponse>
   >;
@@ -79,17 +73,15 @@ export const AuditListingDataFetcher = (): AuditListingPageProps => {
     auditStatuses.map((i) => {
       return {
         queryId: i,
-        ...filterValues,
+        ...(!!filterValues ? filterValues : { type: "all" }),
       };
     })
   );
   return {
     assignedResponse: useAsyncGetUI(auditListingResponseData.assigned),
     closedResponse: useAsyncGetUI(auditListingResponseData.closed),
-    openResponse: useAsyncGetUI(auditListingResponseData.open),
     verifyResponse: useAsyncGetUI(auditListingResponseData.pendingVerification),
     reassignedResponse: useAsyncGetUI(auditListingResponseData.reAssigned),
-    progressResponse: useAsyncGetUI(auditListingResponseData.inProgress),
     onSearch: (searchParams) => {
       setFilterValues(searchParams);
     },
